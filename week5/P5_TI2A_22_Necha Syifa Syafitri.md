@@ -39,7 +39,6 @@ Hasil setelah ditambahkan
 <br> Hasil
 <br>![image](https://github.com/user-attachments/assets/ad0b6a00-7e4a-4c93-bc39-9cc047cd96c2)
 
-
 <br> Ketika button add diklik akan mengarah ke create kategori
 <br>![image](https://github.com/user-attachments/assets/116e032c-a941-406c-84b5-aa03a1445ed7)
 
@@ -90,10 +89,8 @@ Hasil setelah ditambahkan
 <br> Menambahkan kode pada KategoriDataTable.php
 <br>![image](https://github.com/user-attachments/assets/ee6f2739-527c-4fcc-9672-be27fa8c6c81)
 
-
 <br> Menambahkan kode pada KategoriController
 <br>![image](https://github.com/user-attachments/assets/b98b0465-2ebe-49ee-8826-14ea433a2fc8)
-
 
 <br> Menambahkan route di web.php
 <br>![image](https://github.com/user-attachments/assets/e7cc1b14-9ed6-43ab-89b9-6c10715a667f)
@@ -109,4 +106,3 @@ Hasil setelah ditambahkan
 
 <br> Data setelah berhasil dihapus
 <br>![image](https://github.com/user-attachments/assets/83bc36f6-0ea2-40a1-997c-2d26ab3c9029)
-
