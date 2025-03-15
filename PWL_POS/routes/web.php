@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
-
+use App\Http\Controllers\BarangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +56,11 @@ Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('ka
 Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update');
 
 Route::post('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+//Barang
+Route::get('/barang', [BarangController::class, 'index']);
+ Route::get('/barang/create', [BarangController::class, 'create']);
+ Route::post('/barang', [BarangController::class, 'store']);
+ Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
+ Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
+ Route::post('/barang/delete/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');

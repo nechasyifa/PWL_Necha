@@ -313,6 +313,12 @@ return [
         ],
 
         [
+            'text' => 'Manage Barang',
+            'url' => '/barang',
+            'topnav' => true,
+        ],
+
+        [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
