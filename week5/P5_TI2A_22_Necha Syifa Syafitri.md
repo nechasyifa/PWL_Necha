@@ -37,7 +37,8 @@ Hasil setelah ditambahkan
 <br> href="{{ url(path: 'kategori/create') }}" → untuk mengarahkan pengguna ke URL kategori/create, yaitu halaman untuk menambah kategori baru 
 
 <br> Hasil
-<br>![image](https://github.com/user-attachments/assets/6019d5da-84f8-4e37-af53-26955ee11ec1)
+<br>![image](https://github.com/user-attachments/assets/ad0b6a00-7e4a-4c93-bc39-9cc047cd96c2)
+
 
 <br> Ketika button add diklik akan mengarah ke create kategori
 <br>![image](https://github.com/user-attachments/assets/116e032c-a941-406c-84b5-aa03a1445ed7)
