@@ -43,6 +43,7 @@ Route::prefix('category')->group(function () {
 
 Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
 
+//user
 Route::get('/user/tambah', [UserController::class, 'tambah']);
 Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan']);
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);

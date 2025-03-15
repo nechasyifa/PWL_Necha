@@ -319,6 +319,12 @@ return [
         ],
 
         [
+            'text' => 'Manage User',
+            'url' => '/user',
+            'topnav' => true,
+        ],
+
+        [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],

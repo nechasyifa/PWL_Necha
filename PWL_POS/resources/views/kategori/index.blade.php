@@ -11,7 +11,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <span class="w-100">Manage Kategori</span>
-                <a href="{{ url('kategori/create') }}" class="btn btn-primary ms-auto">Add</a>
+                <a href="{{ url('kategori/create') }}" class="btn btn-primary ms-auto">Add Kategori</a>
             </div>
             <div class="card-body">
                 {!! $dataTable->table() !!}
