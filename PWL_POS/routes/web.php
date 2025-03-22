@@ -26,8 +26,7 @@ Route::get('/', function () {
 });
 
 // Route::get('/level', [LevelController::class, 'index']);
-Route::get('/kategori', [KategoriController::class, 'index']);
-
+// Route::get('/kategori', [KategoriController::class, 'index']);
 // Route::get('/user', [UserController::class, 'index']);
 // Route::get('/', [HomeController::class, 'home']);
 
@@ -41,12 +40,6 @@ Route::prefix('category')->group(function () {
 // Route::get('/user/{id}/name/{name}', [UserController::class, 'user']);
 
 Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
-
-Route::get('/kategori/create', [KategoriController::class, 'create']);
-Route::post('/kategori', [KategoriController::class, 'store']);
-Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
-Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update');
-Route::post('/kategori/delete/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
 //Barang
 Route::get('/barang', [BarangController::class, 'index']);
@@ -80,4 +73,16 @@ Route::group(['prefix' => 'level'], function () {
     Route::get('/{id}/edit', [LevelController::class, 'edit']);
     Route::put('/{id}', [LevelController::class, 'update']);
     Route::delete('/{id}', [LevelController::class, 'destroy']);
+});
+
+//Kategori
+Route::group(['prefix' => 'kategori'], function () {
+    Route::get('/', [KategoriController::class, 'index']);
+    Route::post('/list', [KategoriController::class, 'list']);
+    Route::get('/create', [KategoriController::class, 'create']);
+    Route::post('/', [KategoriController::class, 'store']);
+    Route::get('/{id}', [KategoriController::class, 'show']);
+    Route::get('/{id}/edit', [KategoriController::class, 'edit']);
+    Route::put('/{id}', [KategoriController::class, 'update']);
+    Route::delete('/{id}', [KategoriController::class, 'destroy']);
 });
