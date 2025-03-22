@@ -8,6 +8,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,3 +66,5 @@ Route::get('/barang', [BarangController::class, 'index']);
  Route::get('/barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
  Route::put('/barang/{id}', [BarangController::class, 'update'])->name('barang.update');
  Route::post('/barang/delete/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
+
+ Route::get('/', [WelcomeController::class,'index']);
