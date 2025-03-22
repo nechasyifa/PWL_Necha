@@ -33,7 +33,7 @@ class LevelController extends Controller
              $btn  = '<a href="' . url('/level/' . $level->level_id) . '" class="btn btn-info btn-sm">Detail</a> ';
              $btn .= '<a href="' . url('/level/' . $level->level_id . '/edit') . '" class="btn btn-warning btn-sm">Edit</a> ';
              $btn .= '<form class="d-inline-block" method="POST" action="' . url('/level/' . $level->level_id) . '">' . csrf_field() . method_field('DELETE') .
-                 '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakit menghapus data ini?\');">Hapus</button></form>';
+                 '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Apakah Anda yakin menghapus data ini?\');">Hapus</button></form>';
              return $btn;
          })->rawColumns(['aksi'])->make(true);
      }
@@ -133,7 +133,7 @@ class LevelController extends Controller
  
              return redirect('/level')->with('success', 'Data level berhasil dihapus!');
          } catch (\Illuminate\Database\QueryException $e) {
-             return redirect('/level')->with('error', 'Data level gagal dihapus!');
+             return redirect('/level')->with('error', 'Data level gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini!');
          }
     }
 }
