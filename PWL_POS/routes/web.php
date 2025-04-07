@@ -48,8 +48,8 @@ Route::get('login', [AuthController::class,'login'])->name('login');
 Route::post('login', [AuthController::class,'postlogin']);
 Route::get('logout', [AuthController::class,'logout'])->middleware('auth');
 
-// Route::middleware(['auth'])->group(function(){ // Artinya semua route di dalam group ini harus login dulu
-Route::middleware(['authorize:ADM'])->group(function () {
+Route::middleware(['auth'])->group(function(){ // Artinya semua route di dalam group ini harus login dulu
+
 Route::get('/', [WelcomeController::class, 'index']);
 
 //User
@@ -72,6 +72,7 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 //Level
+Route::middleware(['authorize:ADM'])->group(function () {
 Route::group(['prefix' => 'level'], function () {
     Route::get('/', [LevelController::class, 'index']);
     Route::post('/list', [LevelController::class, 'list']);
@@ -88,6 +89,7 @@ Route::group(['prefix' => 'level'], function () {
     Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
     Route::delete('/{id}', [LevelController::class, 'destroy']);
+});
 });
 
 //Kategori
@@ -129,7 +131,8 @@ Route::group(['prefix' => 'supplier'], function () {
 });
 
 //Barang
-Route::group(['prefix' => 'barang'], function () {
+Route::middleware(['authorize:ADM,MNG'])->group(function () {
+    Route::group(['prefix' => 'barang'], function () {
     Route::get('/', [BarangController::class, 'index']);
     Route::post('/list', [BarangController::class, 'list']);
     Route::get('/create', [BarangController::class, 'create']);
@@ -146,5 +149,5 @@ Route::group(['prefix' => 'barang'], function () {
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
     Route::delete('/{id}', [BarangController::class, 'destroy']);
 });
-
+});
 });
