@@ -95,6 +95,7 @@ Route::group(['prefix' => 'level'], function () {
 });
 
 //Kategori
+Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
 Route::group(['prefix' => 'kategori'], function () {
     Route::get('/', [KategoriController::class, 'index']);
     Route::post('/list', [KategoriController::class, 'list']);
@@ -112,8 +113,10 @@ Route::group(['prefix' => 'kategori'], function () {
     Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
 });
+});
 
 //Supplier
+Route::middleware(['authorize:ADM,MNG'])->group(function () {
 Route::group(['prefix' => 'supplier'], function () {
     Route::get('/', [SupplierController::class, 'index']);
     Route::post('/list', [SupplierController::class, 'list']);
@@ -131,9 +134,10 @@ Route::group(['prefix' => 'supplier'], function () {
     Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
     Route::delete('/{id}', [SupplierController::class, 'destroy']);
 });
+});
 
 //Barang
-Route::middleware(['authorize:ADM,MNG'])->group(function () {
+Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
     Route::group(['prefix' => 'barang'], function () {
     Route::get('/', [BarangController::class, 'index']);
     Route::post('/list', [BarangController::class, 'list']);
@@ -150,6 +154,15 @@ Route::middleware(['authorize:ADM,MNG'])->group(function () {
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
     Route::delete('/{id}', [BarangController::class, 'destroy']);
+});
+});
+
+//Barang (route khusus customer hanya bisa melihat barang)
+Route::middleware(['authorize:CUS'])->group(function () {
+    Route::group(['prefix' => 'barang'], function () {
+    Route::get('/', [BarangController::class, 'index']);
+    Route::post('/list', [BarangController::class, 'list']);
+    Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']);
 });
 });
 });
