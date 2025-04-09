@@ -154,12 +154,14 @@ Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
     Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
     Route::delete('/{id}', [BarangController::class, 'destroy']);
+    Route::get('/import', [BarangController::class, 'import']); // menampilkan halaman form upload excel barang ajax
+    Route::post('/import_ajax', [BarangController::class, 'import_ajax']); // menyimpan import excel barang ajax
 });
 });
 
 //Barang (route khusus customer hanya bisa melihat barang)
 Route::middleware(['authorize:CUS'])->group(function () {
-    Route::group(['prefix' => 'barang'], function () {
+    Route::group(['prefix' => 'barang-customer'], function () {
     Route::get('/', [BarangController::class, 'index']);
     Route::post('/list', [BarangController::class, 'list']);
     Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']);
