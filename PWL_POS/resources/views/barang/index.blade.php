@@ -8,8 +8,7 @@
                 <button onclick="modalAction('{{ url('/barang/import') }}')" class="btn btn-info">Import Barang</button>
                 <a href="{{ url('/barang/export_excel') }}" class="btn btn-primary"><i class="fa fa-fileexcel"></i>Export Barang (Excel)</a>
                 <a href="{{ url('/barang/export_pdf') }}" class="btn btn-warning"><i class="fa fa-filepdf"></i> Export Barang (PDF)</a>
-                <button onclick="modalAction('{{ url('/barang/create_ajax') }}')" class="btn btn-success">Tambah Data
-                    Ajax</button>
+                <button onclick="modalAction('{{ url('/barang/create_ajax') }}')" class="btn btn-success">Tambah Data Ajax</button>
             </div>
         </div>
         <div class="card-body">
@@ -40,14 +39,14 @@
             <table class="table table-bordered table-sm table-striped table-hover" id="table_barang">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Id Barang</th>
-                        <th>Kode Barang</th>
-                        <th>Nama Barang</th>
-                        <th>Kategori</th>
-                        <th>Harga Beli</th>
-                        <th>Harga Jual</th>
-                        <th>Aksi</th>
+                        <th style="text-align: center;"> No</th>
+                        <th style="text-align: center;"> Id Barang</th>
+                        <th style="text-align: center;"> Kode Barang</th>
+                        <th style="text-align: center;"> Nama Barang</th>
+                        <th style="text-align: center;"> Kategori</th>
+                        <th style="text-align: center;"> Harga Beli</th>
+                        <th style="text-align: center;"> Harga Jual</th>
+                        <th style="text-align: center;"> Aksi</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -95,7 +94,7 @@
                     },
                     {
                         data: "barang_kode",
-                        className: "",
+                        className: "text-center",
                         width: "10%",
                         orderable: true,
                         searchable: true
