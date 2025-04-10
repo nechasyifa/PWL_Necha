@@ -168,7 +168,8 @@ Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
     Route::delete('/{id}', [BarangController::class, 'destroy']);
     Route::get('/import', [BarangController::class, 'import']); // menampilkan halaman form upload excel barang ajax
     Route::post('/import_ajax', [BarangController::class, 'import_ajax']); // menyimpan import excel barang ajax
-    Route::get('/export_excel', [BarangController::class, 'export_excel']); // menampilkan halaman form export excel barang ajax
+    Route::get('/export_excel', [BarangController::class, 'export_excel']); // menampilkan halaman form export excel barang
+    Route::get('/export_pdf', [BarangController::class, 'export_pdf']); // menampilkan halaman form export pdf barang
 });
 });
 
