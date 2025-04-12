@@ -42,9 +42,6 @@ Tampilan Berhasil Import Data
 <br>![image](https://github.com/user-attachments/assets/e2d81485-7b8f-4e85-8f49-68f47eab2a34)
 <br>![image](https://github.com/user-attachments/assets/a53fbf49-89c6-4390-8704-da67e15c71f8)
 
-### 2. Amati dan jelaskan tiap tahapan yang kalian kerjakan, dan jabarkan dalam laporan
-
-### 3. Submit kode untuk impementasi prakktikum 1 pada repository github kalian. 
 
 ## Praktikum 2 – Export Data ke Excel
 Tampilan Export Excel Data Barang
@@ -88,8 +85,6 @@ Data Supplier Berhasil di Export
 <br>![Screenshot (288)](https://github.com/user-attachments/assets/f30d007e-9dd8-461f-b240-c7a6ed664d4a)
 <br>![image](https://github.com/user-attachments/assets/aecc980b-3b48-4dbe-a812-84aa14b51386)
 
-### 2. Amati dan jelaskan tiap tahapan yang kalian kerjakan, dan jabarkan dalam laporan 
-### 3. Submit kode untuk impementasi prakktikum 2 pada repository github kalian. 
 
 ## Praktikum 3 – Implementasi Export PDF di Laravel dengan dompdf
 Tampilan Export PDF Data Barang
@@ -128,10 +123,13 @@ Data Kategori Berhasil di Export
 Data Supplier Berhasil di Export
 <br>![image](https://github.com/user-attachments/assets/301d1fa4-6c3b-479d-a1fc-4ac652280380)
 
-### 2. Amati dan jelaskan tiap tahapan yang kalian kerjakan, dan jabarkan dalam laporan 
-### 3. Submit kode untuk impementasi export pdf pada repository github kalian. 
 
 ## Tugas 4 – Implementasi Upload File Gambar
-### 1. Silahkan implementasikan fitur upload file untuk mengubah foto profile di project web kalian 
-### 2. Jelaskan tiap tahapan yang kalian kerjakan, dan jabarkan dalam laporan 
-### 3. Submit kode untuk impementasi export pdf pada repository github kalian. 
+### 1. Silahkan implementasikan fitur upload file untuk mengubah foto profile di project web kalian
+Tampilan Profile
+<br>![image](https://github.com/user-attachments/assets/cf969b08-3f8e-4f45-8f62-afd387d720f8)
+<br>![image](https://github.com/user-attachments/assets/d939cf9f-9ad3-4f00-a0c8-e0f49a72382a)
+
+Foto Berhasil Diperbarui
+<br>![image](https://github.com/user-attachments/assets/8de4e569-e038-441d-91aa-1ab67c1578ce)
+
