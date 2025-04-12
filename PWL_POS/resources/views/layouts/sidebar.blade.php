@@ -45,6 +45,17 @@
           <p>Data Barang</p>
         </a>
       </li>
+      @php
+    $role = Auth::user()->getRole();
+  @endphp
+      @if ($role == 'CUS')
+      <li class="nav-item">
+      <a href="{{ url('/barang-customer') }}" class="nav-link {{ Request::is('barang-customer') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-shopping-cart"></i>
+        <p>Daftar Barang</p>
+      </a>
+      </li>
+    @endif
       <li class="nav-header">Data Transaksi</li>
       <li class="nav-item">
         <a href="{{ url('/stok') }}" class="nav-link {{ $activeMenu == 'stok' ? 'active' : '' }} ">
@@ -74,8 +85,8 @@
   </nav>
 </div>
 @push('js')
-<script>
-  function logout() {
+  <script>
+    function logout() {
     Swal.fire({
       title: "Konfirmasi!",
       text: "Apakah Anda yakin untuk keluar?",
@@ -86,15 +97,15 @@
       cancelButtonText: "Kembali"
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Logged out!",
-          text: "Anda berhasil keluar!",
-          icon: "success"
-        }).then(() => {
-          window.location.href = 'logout';
-        });
+      Swal.fire({
+        title: "Logged out!",
+        text: "Anda berhasil keluar!",
+        icon: "success"
+      }).then(() => {
+        window.location.href = 'logout';
+      });
       }
     });
-  }
-</script>
+    }
+  </script>
 @endpush
