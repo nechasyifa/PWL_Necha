@@ -70,6 +70,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a href="{{ url('/pembayaran') }}" class="nav-link {{ $activeMenu == 'pembayaran' ? 'active' : '' }} ">
+          <i class="nav-icon fas fa-credit-card"></i>
+          <p>Pembayaran</p>
+        </a>
+      </li>
+      <li class="nav-item">
         <a href="{{ url('/supplier') }}" class="nav-link {{ $activeMenu == 'supplier' ? 'active' : '' }} ">
           <i class="nav-icon fas fa-truck"></i>
           <p>Supplier</p>

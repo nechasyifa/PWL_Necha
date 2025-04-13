@@ -13,6 +13,8 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PembayaranController;
+
 
 
 /*
@@ -242,6 +244,24 @@ Route::middleware(['auth'])->group(function () { // Artinya semua route di dalam
             Route::post('/import_ajax', [PenjualanController::class, 'import_ajax']);
             Route::get('/export_excel', [PenjualanController::class, 'export_excel']);
             Route::get('/export_pdf', [PenjualanController::class, 'export_pdf']);
+        });
+    });
+
+    //Pembayaran
+    Route::middleware(['authorize:ADM,MNG,STF'])->group(function () {
+        Route::group(['prefix' => 'pembayaran'], function () {
+            Route::get('/', [PembayaranController::class, 'index']);
+            Route::post('/list', [PembayaranController::class, 'list']);
+            Route::get('/create_ajax', [PembayaranController::class, 'create_ajax']);
+            Route::post('/ajax', [PembayaranController::class, 'store_ajax']);
+            Route::get('/{id}/show_ajax', [PembayaranController::class, 'show_ajax']);
+            Route::get('/{id}/edit_ajax', [PembayaranController::class, 'edit_ajax']);
+            Route::put('/{id}/update_ajax', [PembayaranController::class, 'update_ajax']);
+            Route::get('/{id}/delete_ajax', [PembayaranController::class, 'confirm_ajax']);
+            Route::delete('/{id}/delete_ajax', [PembayaranController::class, 'delete_ajax']);
+            Route::post('/import_ajax', [PembayaranController::class, 'import_ajax']);
+            Route::get('/export_excel', [PembayaranController::class, 'export_excel']);
+            Route::get('/export_pdf', [PembayaranController::class, 'export_pdf']);
         });
     });
 });
