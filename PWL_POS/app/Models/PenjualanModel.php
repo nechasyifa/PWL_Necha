@@ -16,16 +16,17 @@ class PenjualanModel extends Model
         'user_id',
         'pembeli',
         'penjualan_kode',
-        'penjualan_tanggal',
+        'penjualan_tanggal'
     ];
 
+    // Relasi ke tabel user (m_user)
     public function user()
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
-
+    // Relasi ke tabel penjualan detail (t_penjualan_detail)
     public function detail()
     {
-        return $this->hasMany(PenjualanDetailModel::class, 'penjualan_id', 'penjualan_id');
+        return $this->hasMany(PenjualanDetailModel::class, 'penjualan_id');
     }
 }

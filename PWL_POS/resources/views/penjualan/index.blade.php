@@ -7,34 +7,14 @@
             <div class="card-tools">
                 <button onclick="modalAction('{{ url('/penjualan/import') }}')" class="btn btn-info">Import
                     Penjualan</button>
-                <a href="{{ url('/penjualan/export_excel') }}" class="btn btn-primary"><i class="fa fa-fileexcel"></i>Export
-                    Penjualan (Excel)</a>
-                <a href="{{ url('/penjualan/export_pdf') }}" class="btn btn-warning"><i class="fa fa-filepdf"></i> Export
-                    Penjualan (PDF)</a>
-                <button onclick="modalAction('{{ url('penjualan/create_ajax') }}')" class="btn btn-success">Tambah Data
+                <a href="{{ url('/penjualan/export_excel') }}" class="btn btn-primary">Export Penjualan (Excel)</a>
+                <a href="{{ url('/penjualan/export_pdf') }}" class="btn btn-warning">Export Penjualan (PDF)</a>
+                <button onclick="modalAction('{{ url('/penjualan/create_ajax') }}')" class="btn btn-success">Tambah Data
                     Ajax</button>
             </div>
         </div>
-        <div class="card-body">
-            <div id="filter" class="form-horizontal filter-user p-2 border-bottom mb-2">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group form-group-sm row text-sm mb-0">
-                            <label for="user_id" class="col-md-1 col-form-label">Filter</label>
-                            <div class="col-md-3">
-                                <select class="form-control form-control-sm filter_user" name="user_id" id="user_id">
-                                    <option value="">- Semua -</option>
-                                    @foreach($user as $item)
-                                        <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
-                                    @endforeach
-                                </select>
-                                <small class="form-text text-muted">Nama User</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
+        <div class="card-body">
             @if (session('success'))
                 <div class="alert alert-success">{{ session('success') }}</div>
             @endif
@@ -42,23 +22,51 @@
                 <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
 
-            <table class="table table-bordered table-striped table-hover table-sm" id="table-penjualan">
+            <div id="filter" class="form-horizontal filter-date p-2 border-bottom mb-2">
+                <div class="row align-items-center">
+                    <label class="col-md-1 col-form-label">Filter</label>
+
+                    <div class="col-md-3">
+                        <select name="filter_kode_penjualan" class="form-control form-control-sm filter_kode_penjualan">
+                            <option value="">- Semua -</option>
+                            @foreach($penjualan as $p)
+                                <option value="{{ $p->penjualan_id }}">{{ $p->penjualan_kode }}</option>
+                            @endforeach
+                        </select>
+                        <small class="form-text text-muted">Kode Penjualan</small>
+                    </div>
+                    <div class="col-md-3">
+                        <select name="filter_barang" class="form-control form-control-sm filter_barang">
+                            <option value="">- Semua -</option>
+                            @foreach($barang as $b)
+                                <option value="{{ $b->barang_id }}">{{ $b->barang_nama }}</option>
+                            @endforeach
+                        </select>
+                        <small class="form-text text-muted">Nama Barang</small>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-sm table-striped table-hover" id="table_penjualan">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>Nama User</th>
-                        <th>Pembeli</th>
-                        <th>Kode Penjualan</th>
-                        <th>Tanggal Penjualan</th>
-                        <th>Aksi</th>
+                        <th class="text-center">No</th>
+                        <th class="text-center">ID Detail Penjualan</th>
+                        <th class="text-center">Kode Penjualan</th>
+                        <th class="text-center">Tanggal Penjualan</th>
+                        <th class="text-center">Nama Barang</th>
+                        <th class="text-center">Jumlah Barang</th>
+                        <th class="text-center">Total Harga</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
     </div>
-    <div id="myModal" class="modal fade animate shake" tabindex="-1" role="dialog" data-backdrop="static"
-        data-keyboard="false" data-width="75%" aria-hidden="true"></div>
+
+    <div id="myModal" class="modal fade animate shake" tabindex="-1" data-backdrop="static" data-keyboard="false"
+        data-width="75%"></div>
 @endsection
 
 @push('js')
@@ -69,73 +77,100 @@
             });
         }
 
-        var tablePenjualan;
+        var dataPenjualan;
+
         $(document).ready(function () {
-            tablePenjualan = $('#table-penjualan').DataTable({
+            dataPenjualan = $('#table_penjualan').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
                     url: "{{ url('penjualan/list') }}",
                     type: "POST",
-                    dataType: "json",
                     data: function (d) {
-                        d.user_id = $('#user_id').val();
+                        d.filter_barang = $('.filter_barang').val();
+                        d.filter_kode_penjualan = $('.filter_kode_penjualan').val();
                     }
                 },
                 columns: [
                     {
                         data: "DT_RowIndex",
                         className: "text-center",
-                        width: "5%",
+                        width: "4%",
                         orderable: false,
                         searchable: false
                     },
                     {
-                        data: "user.nama",  // Update kolom pertama menjadi nama user
-                        className: "",
-                        width: "20%",
-                        orderable: false,
+                        data: "detail_id",
+                        className: "text-center",
+                        width: "12%",
+                        orderable: true,
                         searchable: false
                     },
                     {
-                        data: "pembeli",
-                        className: "",
-                        width: "20%",
+                        data: "penjualan.penjualan_kode",
+                        className: "text-center",
+                        width: "10%",
                         orderable: true,
                         searchable: true
                     },
+
                     {
-                        data: "penjualan_kode",
-                        className: "",
-                        width: "20%",
+                        data: "penjualan.penjualan_tanggal",
+                        className: "text-center",
+                        width: "13%",
                         orderable: true,
-                        searchable: true
+                        searchable: true,
                     },
                     {
-                        data: "penjualan_tanggal",
+                        data: "barang.barang_nama",
                         className: "",
-                        width: "20%",
+                        width: "15%",
+                        orderable: false,
+                        searchable: true,
+                        // render: function (data, type, row) {
+                        //     if (!data) return "";
+                        //     const date = new Date(data);
+                        //     const day = String(date.getDate()).padStart(2, '0');
+                        //     const month = String(date.getMonth() + 1).padStart(2, '0');
+                        //     const year = String(date.getFullYear()).slice(-2); 
+                        //     return `${day} ${month} ${year}`;
+                        // }
+                    },
+                    {
+                        data: "jumlah",
+                        className: "text-center",
+                        width: "9%",
                         orderable: true,
-                        searchable: true
+                        searchable: true,
+                    },
+                    {
+                        data: "harga",
+                        className: "text-right",
+                        width: "10%",
+                        orderable: true,
+                        searchable: true,
                     },
                     {
                         data: "aksi",
                         className: "text-center",
-                        width: "15%",
                         orderable: false,
                         searchable: false
                     }
                 ]
             });
 
-            $('.filter_user').change(function () {
-                tablePenjualan.draw();
+            $('#table_penjualan_filter input').unbind().bind('keyup', function (e) {
+                if (e.keyCode == 13) {
+                    dataPenjualan.search(this.value).draw();
+                }
             });
 
-            $('#table-penjualan_filter input').unbind().bind().on('keyup', function (e) {
-                if (e.keyCode == 13) {
-                    tablePenjualan.search(this.value).draw();
-                }
+            $('.filter_kode_penjualan, .filter_barang').change(function () {
+                dataPenjualan.draw();
+            });
+
+            $('#penjualan_id, #barang_id, #user_id').change(function () {
+                dataPenjualan.ajax.reload();
             });
         });
     </script>

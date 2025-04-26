@@ -7,8 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class PenjualanDetailModel extends Model
 {
+    use HasFactory;
+
     protected $table = 't_penjualan_detail';
     protected $primaryKey = 'detail_id';
+
     protected $fillable = [
         'penjualan_id',
         'barang_id',
@@ -16,11 +19,13 @@ class PenjualanDetailModel extends Model
         'jumlah'
     ];
 
+    // Relasi ke tabel penjualan (t_penjualan)
     public function penjualan()
     {
         return $this->belongsTo(PenjualanModel::class, 'penjualan_id', 'penjualan_id');
     }
 
+    // Relasi ke tabel barang (m_barang)
     public function barang()
     {
         return $this->belongsTo(BarangModel::class, 'barang_id', 'barang_id');

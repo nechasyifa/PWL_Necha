@@ -16,7 +16,8 @@
          'barang_nama',
          'harga_beli',
          'harga_jual',
-         'kategori_id'
+         'kategori_id',
+         'stok'
      ];
  
      public function kategori()
